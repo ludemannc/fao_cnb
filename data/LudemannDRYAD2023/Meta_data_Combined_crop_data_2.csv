@@ -1,0 +1,104 @@
+Variable,Description,Units
+Ag_pc,Mean percentage of dry matter as  Ag,Percentage
+Al_pc,Mean percentage of dry matter as  Al,Percentage
+Al_pc_sd,Standard deviation of percentage of dry matter as  Al,Percentage
+As_pc,Mean percentage of dry matter as  As,Percentage
+Ash_pc,Mean percentage of dry matter as  Ash,Percentage
+Ash_pc_sd,Standard deviation of percentage of dry matter as  Ash,Percentage
+B_pc,Mean percentage of dry matter as  B,Percentage
+B_pc_sd,Standard deviation of percentage of dry matter as  B,Percentage
+Ba_pc,Mean percentage of dry matter as  Ba,Percentage
+Be_pc,Mean percentage of dry matter as  Be,Percentage
+Biomass_productivity_g_per_g,Biomass productivity in grams per gram,grams per gram
+CHO_pc,Mean percentage of dry matter as  CHO,Percentage
+CR_removed_pc,Mean percentage of crop residue removed from harvested area,Percentage
+C_pc_fresh,Mean percentage of fresh weight as  C,Percentage
+Ca_pc,Mean percentage of dry matter as  Ca,Percentage
+Ca_pc_sd,Standard deviation of percentage of dry matter as  Ca,Percentage
+Cd_pc,Mean percentage of dry matter as  Cd,Percentage
+Cellulose_pc,Mean percentage of dry matter as  Cellulose,Percentage
+Cellulose_pc_sd,Standard deviation of percentage of dry matter as  Cellulose,Percentage
+Co_pc,Mean percentage of dry matter as  Co,Percentage
+Cr_pc,Mean percentage of dry matter as  Cr,Percentage
+Cs_pc,Mean percentage of dry matter as  Cs,Percentage
+Cu_pc,Mean percentage of dry matter as  Cu,Percentage
+Cu_pc_sd,Standard deviation of percentage of dry matter as  Cu,Percentage
+DM_pc,Mean dry matter percentage of fresh weight,Percentage
+DM_pc_max,Maximum value for dry matter percentage,Percentage
+DM_pc_min,Minimum value for dry matter percentage,Percentage
+DM_pc_sd,Standard deviation of dry matter percentage of fresh weight,Percentage
+Fat_pc,Mean percentage of dry matter as  Fat,Percentage
+Fat_pc_sd,Standard deviation of percentage of dry matter as  Fat,Percentage
+Fe_pc,Mean percentage of dry matter as  Fe,Percentage
+Fe_pc_sd,Standard deviation of percentage of dry matter as  Fe,Percentage
+Fixed_N_kg_N_metric_t_fresh_crop_product,Mean quantity of nitrogen fixed in kilograms of nitrogen per tonne of fresh weight crop product,kg N per tonne fresh weight of crop products
+HI,Mean harvest index as a proportion of crop products as above ground biomass,Proportion
+HI_sd,Standard deviation of harvest index as a proportion of crop products as above ground biomass,Proportion
+K_pc,Mean percentage of dry matter as  K,Percentage
+K_pc_fresh,Mean percentage of fresh weight as  K,Percentage
+K_pc_max_90pc_CI,"Percentage of dry matter as elemental potassium, maximum value for elemental potassium concentration of crop component. Note (as per pg 1-2 of Nijhof (1987)) 'the established ranges cover 90% [confidence interval, CI] of the values found, i.e. the upper and lower extremes were excluded'.",Percentage
+K_pc_min,Minimum value for elemental potassium concentration as a percentage of dry matter,Percentage
+K_pc_min_90pc_CI,"Percentage of dry matter as elemental potassium, minimum value for elemental potassium concentration of crop component. Note (as per pg 1-2 of Nijhof (1987)) 'the established ranges cover 90% [confidence interval, CI] of the values found, i.e. the upper and lower extremes were excluded'.",Percentage
+K_pc_sd,Standard deviation of percentage of dry matter as  K,Percentage
+Li_pc,Mean percentage of dry matter as  Li,Percentage
+Lipid_pc,Mean percentage of dry matter as  Lipid,Percentage
+Maximum_Above_ground_biomass_kg_DM_ha,Maximum value for above ground biomass in kilograms of dry matter per hectare,kg DM per hectare
+Maximum_Grain_yield_kg_DM_ha,Maximum value for grain yield in kilograms of dry matter per hectare,kg DM per hectare
+Maximum_Harvest_index,Maximum value for harvest index where harvest index is a proportion,Proportion
+Mean_Above_ground_biomass_kg_DM_ha,Mean above ground biomass in kilograms of dry matter per hectare,kg DM per hectare
+Mean_Grain_yield_kg_DM_ha,Mean grain yield in kilograms of dry matter per hectare,kg DM per hectare
+Mg_pc,Mean percentage of dry matter as  Mg,Percentage
+Mg_pc_sd,Standard deviation of percentage of dry matter as  Mg,Percentage
+Minimum_Above_ground_biomass_kg_DM_ha,Minimum value for above ground biomass in kilograms of dry matter per hectare,kg DM per hectare
+Minimum_Grain_yield_kg_DM_ha,Minimum value for grain yield in kilograms of dry matter per hectare,kg DM per hectare
+Minimum_Harvest_index,Minimum value for harvest index where harvest index is a proportion,Proportion
+Mn_pc,Mean percentage of dry matter as  Mn,Percentage
+Mn_pc_sd,Standard deviation of percentage of dry matter as  Mn,Percentage
+Mo_pc,Mean percentage of dry matter as  Mo,Percentage
+N_pc,Mean percentage of dry matter as  N,Percentage
+N_pc_fresh,Mean percentage of fresh weight as  N,Percentage
+N_pc_max,Maximum value for nitrogen concentration as a percentage of dry matter,Percentage
+N_pc_max_90pc_CI,"Percentage of dry matter as nitrogen, maximum value for nitrogen concentration of crop component. Note (as per pg 1-2 of Nijhof (1987)) 'the established ranges cover 90% [confidence interval, CI] of the values found, i.e. the upper and lower extremes were excluded'.",Percentage
+N_pc_min,Minimum value for nitrogen concentration as a percentage of dry matter,Percentage
+N_pc_min_90pc_CI,"Percentage of dry matter as nitrogen, minimum value for nitrogen concentration of crop component. Note (as per pg 1-2 of Nijhof (1987)) 'the established ranges cover 90% [confidence interval, CI] of the values found, i.e. the upper and lower extremes were excluded'.",Percentage
+N_pc_sd,Standard deviation of percentage of dry matter as  N,Percentage
+Na_pc,Mean percentage of dry matter as  Na,Percentage
+Na_pc_sd,Standard deviation of percentage of dry matter as  Na,Percentage
+Ni_pc,Mean percentage of dry matter as  Ni,Percentage
+Nitrogen_requirement_of_crop_mg_per_g,Nitrogen requirement of crop in milligrams per gram,Mg per gram
+Nitrogen_to_protein_factor,Factor used to convert nitrogen concentration to protein concentration,Numeric value
+No_samples,Number of samples,Numeric value
+P_pc,Mean percentage of dry matter as  P,Percentage
+P_pc_fresh,Mean percentage of fresh weight as  P,Percentage
+P_pc_max_90pc_CI,"Percentage of dry matter as elemental phosphorus, maximum value for elemental phosphorus concentration of crop component. Note (as per pg 1-2 of Nijhof (1987)) 'the established ranges cover 90% [confidence interval, CI] of the values found, i.e. the upper and lower extremes were excluded'.",Percentage
+P_pc_min,Minimum value for elemental phosphorus concentration as a percentage of dry matter,Percentage
+P_pc_min_90pc_CI,"Percentage of dry matter as elemental phosphorus, minimum value for elemental phosphorus concentration of crop component. Note (as per pg 1-2 of Nijhof (1987)) 'the established ranges cover 90% [confidence interval, CI] of the values found, i.e. the upper and lower extremes were excluded'.",Percentage
+P_pc_no_samples,Number of samples used for estimating mean elemental phosphorus concentration,Numeric value
+P_pc_sd,Standard deviation of percentage of dry matter as  P,Percentage
+Pb_pc,Mean percentage of dry matter as  Pb,Percentage
+Protein_pc,Mean percentage of dry matter as  Protein,Percentage
+Protein_pc_max,Maximum value for protein percentage in percentage of dry matter as protein,Percentage
+Protein_pc_min,Minimum value for protein percentage in percentage of dry matter as protein,Percentage
+Protein_pc_sd,Standard deviation of percentage of dry matter as  Protein,Percentage
+Ratio_residues_removed_from_field,Ratio of crop residues removed from the field,Ratio
+Rb_pc,Mean percentage of dry matter as  Rb,Percentage
+Recycled_K_kg_K_t_fresh_crop_product,Mean quantity of elemental potassium recycled in kilograms of potassium per tonne of fresh weight crop product,kg elemental K per tonne fresh weight crop products
+Recycled_N_kg_N_t_fresh_crop_product,Mean quantity of nitrogen recycled in kilograms of nitrogen per tonne of fresh weight crop product,kg N per tonne fresh weight of crop products
+Recycled_P_kg_P_t_fresh_crop_product,Mean quantity of elemental phosphorus recycled in kilograms of phosphorus per tonne of fresh weight crop product,kg elemental P per tonne fresh weight of crop products
+S_pc,Mean percentage of dry matter as  S,Percentage
+S_pc_fresh,Mean percentage of fresh weight as  S,Percentage
+S_pc_sd,Standard deviation of percentage of dry matter as  S,Percentage
+Se_pc,Mean percentage of dry matter as  Se,Percentage
+Sr_pc,Mean percentage of dry matter as  Sr,Percentage
+Tl_pc,Mean percentage of dry matter as  Tl,Percentage
+U_pc,Mean percentage of dry matter as  U,Percentage
+V_pc,Mean percentage of dry matter as  V,Percentage
+Water_pc,Mean water (moisture) percentage of fresh weight,Percentage
+Water_pc_sd,Mean water (moisture) percentage of fresh weight,Percentage
+Yield_kg_DM_ha,Mean yield in kilograms of dry matter per hectare,kg DM per hectare
+Yield_kg_DM_ha_sd,Mean yield in kilograms of dry matter per hectare,kg DM per hectare
+Zn_pc,Mean percentage of dry matter as  Zn,Percentage
+Zn_pc_sd,Standard deviation of percentage of dry matter as  Zn,Percentage
+n_Above_ground_biomass_kg_DM_ha,Number of samples used for estimating mean above ground biomass,Numeric value
+n_Grain_yield_kg_DM_ha,Number of samples used for estimating mean grain yield,Numeric value
+n_Harvest_index,Number of samples used for estimating mean harvest index,Numeric value

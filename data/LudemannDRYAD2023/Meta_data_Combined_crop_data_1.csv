@@ -1,0 +1,26 @@
+Parameter,Description,Format,Units
+original_crop,Name of original crop used in reference where data were collated,Character,Character
+item,Item name following UN FAO statistical conventions (note only item names were given to crops in the Item Group Code 1714 it was too difficult to assign Item names to other Item codes because the names vary depending on Item Group Code or Domain),Character,Character
+item_code,Item code following UN FAO statistical conventions,Numeric,Numeric
+item_group_code,Item code group following UN FAO statistical conventions,Numeric,Numeric
+item_group,Item group following UN FAO statistical conventions,Character,Character
+factor,Factor value based on UN FAO statistical conventions,Numeric,Numeric
+hs_code,Harmonized System Code,Character,Character
+hs07_code,Harmonized System Code 2007,Character,Character
+hs12_code,Harmonized System Code 2012,Character,Character
+cpc_code,Central Product Classification for goods and services promulgated by the United Nations Statistical Commission,Character,Character
+original_crop_component,Name of original crop category used in source of data,Character,Character
+crop_component,"Standardised crop component category that the values are applicable to, either as Crop_products or Crop_residues. These were standardised based on the original_crop_component information",Character,Character
+original_region,Name of original region used in source document or dataset,Character,Character
+iso3_code,"The 3-letter alpha-3 country code following the ISO 3166 international standards, see https://www.iso.org/publication/PUB500001.html",Character,Character
+country_iso3c,"The country name following the English ISO 3166 international standards, see https://www.iso.org/publication/PUB500001.html",Character,Character
+un_region_name,UN region name based on ISO 3166 country name,Character,Character
+un_sub_region_name,UN sub-region name based on ISO 3166 country name,Character,Character
+un_intermediate_region_name,UN intermediate region name based on ISO 3166 country name,Character,Character
+latitude,Latitude of origin of value if applicable. Many data do not have latitude as they represent whole regions or countries,Numeric,Numeric
+longitude,Longitude of origin of value if applicable. Many data do not have longitude as they represent whole regions or countries,Numeric,Numeric
+reference_where_data_were_collated,Details of reference where there data were collated,Character,Character
+website_of_source_of_collated_data,Details of the website of the reference where data were collated,Character,Character
+primary_reference_of_dataset,Details of the primary reference if the reference data were collated from came from multiple sources,Character,Character
+variable,Name of variable. Note in some cases these variables had been standardised from the original values so that nutrient concentrations were available on a percentage of dry matter basis,Character,Character with a description of each variable available in the accompanying Meta_data_Combined_crop_data file
+value,Numeric value of variable,Numeric,Numeric

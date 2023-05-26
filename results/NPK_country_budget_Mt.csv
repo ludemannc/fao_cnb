@@ -1,0 +1,31 @@
+"Area","Area.Code","Area.Code.M49","Item.Code","Item","Element.Code","Element","Unit","Year","value","Item_order","country_iso3","N_rank","Nutrient","Value_Mt"
+"Brazil","21","'076","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",3524040.6324,11,"BRA",4,"N",3.5240406324
+"Brazil","21","'076","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",2470443.5557,11,"BRA",4,"K",2.4704435557
+"Brazil","21","'076","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",1359263.9689,11,"BRA",4,"P",1.3592639689
+"Canada","33","'124","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",98489.4799,11,"CAN",7,"P",0.0984894799
+"Canada","33","'124","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",48017.0282,11,"CAN",7,"K",0.0480170282
+"Canada","33","'124","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",1436029.9821,11,"CAN",7,"N",1.4360299821
+"China","351","'159","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",2256894.1002,11,"CHN",1,"P",2.2568941002
+"China","351","'159","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",4197535.4528,11,"CHN",1,"K",4.1975354528
+"China","351","'159","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",19369178.3854,11,"CHN",1,"N",19.3691783854
+"France","68","'250","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",1451688.9242,11,"FRA",9,"N",1.4516889242
+"France","68","'250","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",79882.3998,11,"FRA",9,"P",0.0798823998
+"France","68","'250","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",686704.6928,11,"FRA",9,"K",0.6867046928
+"India","100","'356","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",19785653.0871,11,"IND",2,"N",19.7856530871
+"India","100","'356","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",2117279.7857,11,"IND",2,"P",2.1172797857
+"India","100","'356","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",-513083.7683,11,"IND",2,"K",-0.5130837683
+"Indonesia","101","'360","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",2476554.9008,11,"IDN",6,"N",2.4765549008
+"Indonesia","101","'360","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",180552.7459,11,"IDN",6,"P",0.1805527459
+"Indonesia","101","'360","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",268671.1092,11,"IDN",6,"K",0.2686711092
+"Pakistan","165","'586","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",3853774.4343,11,"PAK",5,"N",3.8537744343
+"Pakistan","165","'586","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",464964.6287,11,"PAK",5,"P",0.4649646287
+"Pakistan","165","'586","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",458770.4875,11,"PAK",5,"K",0.4587704875
+"Russian Federation","185","'643","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",518233.1477,11,"RUS",8,"K",0.5182331477
+"Russian Federation","185","'643","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",1196498.7392,11,"RUS",8,"N",1.1964987392
+"Russian Federation","185","'643","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",-7558.4232,11,"RUS",8,"P",-0.0075584232
+"Ukraine","230","'804","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",638261.5753,11,"UKR",10,"N",0.6382615753
+"Ukraine","230","'804","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",-145634.1169,11,"UKR",10,"P",-0.1456341169
+"Ukraine","230","'804","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",-180347.6011,11,"UKR",10,"K",-0.1803476011
+"United States of America","231","'840","5081","Soil nutrient budget","7275","Cropland nitrogen","tonnes","2020",5758370.83,11,"USA",3,"N",5.75837083
+"United States of America","231","'840","5081","Soil nutrient budget","7280","Cropland phosphorus","tonnes","2020",-248005.233,11,"USA",3,"P",-0.248005233
+"United States of America","231","'840","5081","Soil nutrient budget","7282","Cropland potassium","tonnes","2020",469760.1739,11,"USA",3,"K",0.4697601739

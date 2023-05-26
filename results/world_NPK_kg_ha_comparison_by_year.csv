@@ -1,0 +1,11 @@
+"Item","Element","Unit","Y1961_kg_ha","Y2020_kg_ha","pc_diff_from_kg_ha","Item","Element","Unit","Y1961_kg_ha","Y2020_kg_ha","pc_diff_from_kg_ha","Item","Element","Unit","Y1961_kg_ha","Y2020_kg_ha","pc_diff_from_kg_ha"
+"Input","Cropland nitrogen per unit area","kg/ha",33,120,260,"Input","Cropland phosphorus per unit area","kg/ha",6.5,18,180,"Input","Cropland potassium per unit area","kg/ha",20,37,85
+"Synthetic Fertilizers","Cropland nitrogen per unit area","kg/ha",7.7,69,800,"Synthetic Fertilizers","Cropland phosphorus per unit area","kg/ha",3.3,13,290,"Synthetic Fertilizers","Cropland potassium per unit area","kg/ha",4.9,21,330
+"Manure applied to Soils","Cropland nitrogen per unit area","kg/ha",13,17,31,"Manure applied to Soils","Cropland phosphorus per unit area","kg/ha",3.2,4.2,31,"Manure applied to Soils","Cropland potassium per unit area","kg/ha",16,16,0
+"Biological Fixation","Cropland nitrogen per unit area","kg/ha",7.8,25,220,"Biological Fixation","Cropland phosphorus per unit area","kg/ha",0,0,NA,"Biological Fixation","Cropland potassium per unit area","kg/ha",0,0,NA
+"Atmospheric Deposition","Cropland nitrogen per unit area","kg/ha",5.3,10,89,"Atmospheric Deposition","Cropland phosphorus per unit area","kg/ha",0,0,NA,"Atmospheric Deposition","Cropland potassium per unit area","kg/ha",0,0,NA
+"Outputs","Cropland nitrogen per unit area","kg/ha",20,66,230,"Outputs","Cropland phosphorus per unit area","kg/ha",4.1,13,220,"Outputs","Cropland potassium per unit area","kg/ha",9.3,29,210
+"Crop Removal","Cropland nitrogen per unit area","kg/ha",20,66,230,"Crop Removal","Cropland phosphorus per unit area","kg/ha",4.1,13,220,"Crop Removal","Cropland potassium per unit area","kg/ha",9.3,29,210
+"Leaching","Cropland nitrogen per unit area","kg/ha",3.3,10,200,"Leaching","Cropland phosphorus per unit area","kg/ha",0,0,NA,"Leaching","Cropland potassium per unit area","kg/ha",0,0,NA
+"Volatilisation","Cropland nitrogen per unit area","kg/ha",6,26,330,"Volatilisation","Cropland phosphorus per unit area","kg/ha",0,0,NA,"Volatilisation","Cropland potassium per unit area","kg/ha",0,0,NA
+"Soil nutrient budget","Cropland nitrogen per unit area","kg/ha",14,54,290,"Soil nutrient budget","Cropland phosphorus per unit area","kg/ha",2.3,4.3,87,"Soil nutrient budget","Cropland potassium per unit area","kg/ha",11,7.5,-32

@@ -1,0 +1,11 @@
+"Item","Element","Unit","Y1961_Mt","Y2020_Mt","pc_diff_from_Mt","Item","Element","Unit","Y1961_Mt","Y2020_Mt","pc_diff_from_Mt","Item","Element","Unit","Y1961_Mt","Y2020_Mt","pc_diff_from_Mt"
+"Input","Cropland nitrogen","tonnes",45,190,320,"Input","Cropland phosphorus","tonnes",8.7,27,210,"Input","Cropland potassium","tonnes",28,58,110
+"Synthetic Fertilizers","Cropland nitrogen","tonnes",10,110,1000,"Synthetic Fertilizers","Cropland phosphorus","tonnes",4.5,21,370,"Synthetic Fertilizers","Cropland potassium","tonnes",6.6,32,380
+"Manure applied to Soils","Cropland nitrogen","tonnes",17,26,53,"Manure applied to Soils","Cropland phosphorus","tonnes",4.3,6.6,53,"Manure applied to Soils","Cropland potassium","tonnes",21,25,19
+"Biological Fixation","Cropland nitrogen","tonnes",11,39,250,"Biological Fixation","Cropland phosphorus","tonnes",0,0,NA,"Biological Fixation","Cropland potassium","tonnes",0,0,NA
+"Atmospheric Deposition","Cropland nitrogen","tonnes",7.1,16,130,"Atmospheric Deposition","Cropland phosphorus","tonnes",0,0,NA,"Atmospheric Deposition","Cropland potassium","tonnes",0,0,NA
+"Outputs","Cropland nitrogen","tonnes",27,100,270,"Outputs","Cropland phosphorus","tonnes",5.6,21,280,"Outputs","Cropland potassium","tonnes",13,46,250
+"Crop Removal","Cropland nitrogen","tonnes",27,100,270,"Crop Removal","Cropland phosphorus","tonnes",5.6,21,280,"Crop Removal","Cropland potassium","tonnes",13,46,250
+"Leaching","Cropland nitrogen","tonnes",4.4,16,260,"Leaching","Cropland phosphorus","tonnes",0,0,NA,"Leaching","Cropland potassium","tonnes",0,0,NA
+"Volatilisation","Cropland nitrogen","tonnes",8.1,40,390,"Volatilisation","Cropland phosphorus","tonnes",0,0,NA,"Volatilisation","Cropland potassium","tonnes",0,0,NA
+"Soil nutrient budget","Cropland nitrogen","tonnes",18,85,370,"Soil nutrient budget","Cropland phosphorus","tonnes",3.2,6.7,110,"Soil nutrient budget","Cropland potassium","tonnes",15,12,-20

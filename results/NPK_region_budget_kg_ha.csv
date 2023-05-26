@@ -1,0 +1,40 @@
+"Area","Area.Code","Area.Code.M49","Item.Code","Item","Element.Code","Element","Unit","Year","value","Item_order","country_iso3","N_rank","Nutrient","Value_kg_ha"
+"Africa","5100","'002","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",12.0978,11,NA,NA,"N",12.0978
+"Africa","5100","'002","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",-3.9938,11,NA,NA,"P",-3.9938
+"Africa","5100","'002","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",-8.7021,11,NA,NA,"K",-8.7021
+"Australia and New Zealand","5501","'053","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",23.825,11,NA,NA,"N",23.825
+"Australia and New Zealand","5501","'053","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",5.0448,11,NA,NA,"P",5.0448
+"Australia and New Zealand","5501","'053","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",1.3797,11,NA,NA,"K",1.3797
+"Central America","5204","'013","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",52.8943,11,NA,NA,"N",52.8943
+"Central America","5204","'013","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",5.9727,11,NA,NA,"P",5.9727
+"Central America","5204","'013","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",3.949,11,NA,NA,"K",3.949
+"Central Asia","5301","'143","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",26.9956,11,NA,NA,"N",26.9956
+"Central Asia","5301","'143","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",1.9631,11,NA,NA,"P",1.9631
+"Central Asia","5301","'143","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",12.4763,11,NA,NA,"K",12.4763
+"Eastern Asia","5302","'030","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",138.7853,11,NA,NA,"N",138.7853
+"Eastern Asia","5302","'030","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",17.0523,11,NA,NA,"P",17.0523
+"Eastern Asia","5302","'030","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",33.1698,11,NA,NA,"K",33.1698
+"Eastern Europe","5401","'151","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",20.7987,11,NA,NA,"N",20.7987
+"Eastern Europe","5401","'151","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",0.0861,11,NA,NA,"P",0.0861
+"Eastern Europe","5401","'151","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",7.2697,11,NA,NA,"K",7.2697
+"Northern America","5203","'021","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",36.1824,11,NA,NA,"N",36.1824
+"Northern America","5203","'021","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",-0.7519,11,NA,NA,"P",-0.7519
+"Northern America","5203","'021","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",2.6041,11,NA,NA,"K",2.6041
+"Northern Europe","5402","'154","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",86.3349,11,NA,NA,"N",86.3349
+"Northern Europe","5402","'154","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",6.7363,11,NA,NA,"P",6.7363
+"Northern Europe","5402","'154","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",48.2825,11,NA,NA,"K",48.2825
+"South America","5207","'005","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",45.0268,11,NA,NA,"N",45.0268
+"South America","5207","'005","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",9.492,11,NA,NA,"P",9.492
+"South America","5207","'005","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",13.1582,11,NA,NA,"K",13.1582
+"Southern Asia","5303","'034","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",108.2958,11,NA,NA,"N",108.2958
+"Southern Asia","5303","'034","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",11.3132,11,NA,NA,"P",11.3132
+"Southern Asia","5303","'034","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",0.8306,11,NA,NA,"K",0.8306
+"Southern Europe","5403","'039","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",65.4631,11,NA,NA,"N",65.4631
+"Southern Europe","5403","'039","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",8.4648,11,NA,NA,"P",8.4648
+"Southern Europe","5403","'039","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",27.2855,11,NA,NA,"K",27.2855
+"Western Asia","5305","'145","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",38.8925,11,NA,NA,"N",38.8925
+"Western Asia","5305","'145","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",2.6973,11,NA,NA,"P",2.6973
+"Western Asia","5305","'145","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",-12.5164,11,NA,NA,"K",-12.5164
+"Western Europe","5404","'155","5081","Soil nutrient budget","7276","Cropland nitrogen per unit area","kg/ha","2020",79.2234,11,NA,NA,"N",79.2234
+"Western Europe","5404","'155","5081","Soil nutrient budget","7281","Cropland phosphorus per unit area","kg/ha","2020",6.1586,11,NA,NA,"P",6.1586
+"Western Europe","5404","'155","5081","Soil nutrient budget","7283","Cropland potassium per unit area","kg/ha","2020",50.1848,11,NA,NA,"K",50.1848
