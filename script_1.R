@@ -1311,3 +1311,151 @@ ggsave("./results/plot_world_N_P_K_kg_ha.jpg", Nu_kg_ha_Plot,
        width = 20, height = 20, units = "cm")
 ggsave("./results/plot_world_NUE_PUE_KUE.jpg", NuUE_Plot,
        width = 20, height = 20, units = "cm")
+
+
+#Further analysis following peer review:
+#Compare P results from Zou et al (2022) https://www.nature.com/articles/s41586-022-05220-z
+Zou_2022_P <-as.data.frame(read_excel("data/Zou et al 2022 Nature Global trends cropland K.xlsx"))
+
+#Tidy Zou data
+Zou_2022_P <- Zou_2022_P %>% pivot_longer(col=c(-Item), 
+                                   names_to="year", 
+                                   values_to="value") %>% 
+  mutate(Source="Zou", 
+         Item=gsub( "Zou", "", Item),
+         Item=gsub( "kg", "Mt", Item),
+         Item=gsub( "%", "pc", Item)) %>% 
+  pivot_wider(names_from=c(Item), values_from = value) %>% 
+  mutate(Input_MtPperYr=Input_MtPperYr/1000000000, 
+         Output_MtPperYr=Output_MtPperYr/1000000000, 
+         Surplus_MtPperYr=Surplus_MtPperYr/1000000000) %>% #Ensure columns relate to correct units.
+  pivot_longer(col=c(-year, -Source), names_to='Item')
+View(Zou_2022_P)
+  
+#Get equivalent data from FAO
+FAO_2023_P <- dplyr::filter(df_world, 
+                            Nutrient=="P",
+                            Unit%in%c("%", "tonnes"), 
+                            Item.Code%in%c(5079, 5080,5081)) %>% 
+  mutate(Element_code=paste(Element.Code, Item, Unit)) %>% 
+  mutate(Source="Current study", 
+         Item=case_when(
+  str_detect(Element_code,regex("7280 Input", ignore_case=TRUE))~"Input_MtPperYr",
+  str_detect(Element_code,regex("7280 Outputs", ignore_case=TRUE))~"Output_MtPperYr",
+  str_detect(Element_code,regex("7280 Soil nutrient budget tonnes", ignore_case=TRUE))~"Surplus_MtPperYr",
+  str_detect(Element_code,regex("7291 Soil nutrient budget %", ignore_case=TRUE))~"PUE_pc",
+  TRUE~"NA")) %>% 
+  select(Item, Year,value, Source ) %>% 
+ pivot_wider(names_from=c(Item), values_from = value) %>% 
+  mutate(Input_MtPperYr=Input_MtPperYr/1000000, 
+         Output_MtPperYr=Output_MtPperYr/1000000, 
+         Surplus_MtPperYr=Surplus_MtPperYr/1000000)%>%  #Ensure column relate to correct units.
+  pivot_longer(col=c(-Year, -Source), names_to='Item')
+
+#Align names of dataframes for rbind
+names(FAO_2023_P) <- tolower(names(FAO_2023_P)) 
+names(Zou_2022_P) <- tolower(names(Zou_2022_P))
+
+FAO_Zou_P <- rbind(FAO_2023_P,
+                   Zou_2022_P)
+FAO_Zou_P$year <- as.numeric(FAO_Zou_P$year)
+
+#Create separate data frames for each component
+FAO_Zou_P_Input <- FAO_Zou_P %>% filter(item=="Input_MtPperYr")
+FAO_Zou_P_Output <- FAO_Zou_P %>% filter(item=="Output_MtPperYr")
+FAO_Zou_P_Surplus <- FAO_Zou_P %>% filter(item=="Surplus_MtPperYr")
+FAO_Zou_PUE_pc <- FAO_Zou_P %>% filter(item=="PUE_pc")
+
+#Plot differences between Zou and FAO data
+#Inputs
+FAO_Zou_P_input_plot  <- FAO_Zou_P_Input %>%  
+  ggplot(aes(x=year, y=value, color = source)) +
+  geom_line(aes(color = source, size=source)) +
+  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
+  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  theme(axis.line.x = element_line(color="black", size = 0.5),
+        axis.line.y = element_line(color="black", size = 0.5),
+        axis.text.x=element_text(angle=90),text=element_text(size=20),
+        panel.border = element_blank(), panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),  legend.key = element_blank(),
+        panel.background = element_rect(fill="white", color="white"),
+        strip.background = element_blank(),
+        legend.title = element_text(size = legend_title_size-0.5), 
+        legend.key.size = unit(legend_key_size-0.5, 'cm'),
+        legend.text=element_text(size=legend_title_size-0.5))+
+  labs(tag="(a)", y= "Phosphorus inputs\n (Mt per year)")
+FAO_Zou_P_input_plot
+
+#Outputs
+FAO_Zou_P_output_plot  <- FAO_Zou_P_Output %>%  
+  ggplot(aes(x=year, y=value, color = source)) +
+  geom_line(aes(color = source, size=source)) +
+  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
+  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  theme(axis.line.x = element_line(color="black", size = 0.5),
+        axis.line.y = element_line(color="black", size = 0.5),
+        axis.text.x=element_text(angle=90),text=element_text(size=20),
+        panel.border = element_blank(), panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),  legend.key = element_blank(),
+        panel.background = element_rect(fill="white", color="white"),
+        strip.background = element_blank(),
+        legend.title = element_text(size = legend_title_size-0.5), 
+        legend.key.size = unit(legend_key_size-0.5, 'cm'),
+        legend.text=element_text(size=legend_title_size-0.5))+
+  labs(tag="(b)", y= "Phosphorus outputs\n (Mt per year)")
+FAO_Zou_P_output_plot
+
+#Surplus
+FAO_Zou_P_surplus_plot  <- FAO_Zou_P_Surplus %>%  
+  ggplot(aes(x=year, y=value, color = source)) +
+  geom_line(aes(color = source, size=source)) +
+  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
+  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  theme(axis.line.x = element_line(color="black", size = 0.5),
+        axis.line.y = element_line(color="black", size = 0.5),
+        axis.text.x=element_text(angle=90),text=element_text(size=20),
+        panel.border = element_blank(), panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),  legend.key = element_blank(),
+        panel.background = element_rect(fill="white", color="white"),
+        strip.background = element_blank(),
+        legend.title = element_text(size = legend_title_size-0.5), 
+        legend.key.size = unit(legend_key_size-0.5, 'cm'),
+        legend.text=element_text(size=legend_title_size-0.5))+
+  labs(tag="(c)", y= "Phosphorus surplus\n (Mt per year)")
+FAO_Zou_P_surplus_plot
+
+
+#Surplus
+FAO_Zou_PUE_plot  <- FAO_Zou_PUE_pc %>%  
+  ggplot(aes(x=year, y=value, color = source)) +
+  geom_line(aes(color = source, size=source)) +
+  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
+  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  theme(axis.line.x = element_line(color="black", size = 0.5),
+        axis.line.y = element_line(color="black", size = 0.5),
+        axis.text.x=element_text(angle=90),text=element_text(size=20),
+        panel.border = element_blank(), panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),  legend.key = element_blank(),
+        panel.background = element_rect(fill="white", color="white"),
+        strip.background = element_blank(),
+        legend.title = element_text(size = legend_title_size-0.5), 
+        legend.key.size = unit(legend_key_size-0.5, 'cm'),
+        legend.text=element_text(size=legend_title_size-0.5))+
+  labs(tag="(d)", y= "PUE\n (%)")
+FAO_Zou_PUE_plot
+
+plot_world_P_budget_PUE_inputs_outputs_comparison <- ggarrange(
+  FAO_Zou_P_input_plot,
+  FAO_Zou_P_output_plot,
+  FAO_Zou_P_surplus_plot,
+  FAO_Zou_PUE_plot,
+  ncol=1,nrow=4, common.legend=T, legend="bottom", 
+  font.label = list(size = 30))                  
+
+ggsave("./results/plot_world_P_budget_PUE_inputs_outputs_comparison.jpg", 
+       plot_world_P_budget_PUE_inputs_outputs_comparison,
+       width = 60, height = 60, units = "cm")
+
+#Save csv files
+write.csv(FAO_Zou_P,"./results/FAO_Zou_P_comparison_by_year_world.csv",
+          row.names= FALSE)
