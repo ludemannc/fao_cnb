@@ -285,7 +285,7 @@ NPK_country_budget_plot_Mt <- df_country %>% #On a Million tonne basis
         legend.text=element_text(size=legend_title_size))  +
   geom_hline(yintercept=0, linetype="solid", color = "black", size=0.25)
 
-NPK_country_budget_plot_kg_ha <- df_country %>% #On a Million tonne basis
+NPK_country_budget_plot_kg_ha <- df_country %>% #On a per ha basis.
   mutate(Nutrient= fct_relevel(Nutrient,
                                "N","P","K")) %>% 
   dplyr::filter(Element %in% c("Cropland nitrogen per unit area","Cropland phosphorus per unit area","Cropland potassium per unit area")) %>% 
@@ -1321,7 +1321,7 @@ Zou_2022_P <-as.data.frame(read_excel("data/Zou et al 2022 Nature Global trends 
 Zou_2022_P <- Zou_2022_P %>% pivot_longer(col=c(-Item), 
                                    names_to="year", 
                                    values_to="value") %>% 
-  mutate(Source="Zou", 
+  mutate(Source="Zou et al (2022)", 
          Item=gsub( "Zou", "", Item),
          Item=gsub( "kg", "Mt", Item),
          Item=gsub( "%", "pc", Item)) %>% 
@@ -1330,8 +1330,7 @@ Zou_2022_P <- Zou_2022_P %>% pivot_longer(col=c(-Item),
          Output_MtPperYr=Output_MtPperYr/1000000000, 
          Surplus_MtPperYr=Surplus_MtPperYr/1000000000) %>% #Ensure columns relate to correct units.
   pivot_longer(col=c(-year, -Source), names_to='Item')
-View(Zou_2022_P)
-  
+
 #Get equivalent data from FAO
 FAO_2023_P <- dplyr::filter(df_world, 
                             Nutrient=="P",
@@ -1359,6 +1358,13 @@ names(Zou_2022_P) <- tolower(names(Zou_2022_P))
 FAO_Zou_P <- rbind(FAO_2023_P,
                    Zou_2022_P)
 FAO_Zou_P$year <- as.numeric(FAO_Zou_P$year)
+FAO_Zou_P$Reference <- FAO_Zou_P$source
+
+FAO_Zou_P <- FAO_Zou_P %>% 
+mutate(Reference=case_when(
+         str_detect(source,regex("Current study", ignore_case=TRUE))~"FAO (2022) Cropland Nutrient Budget (current study)",
+        # str_detect(source,regex("Zou et al \\(2022\\)", ignore_case=TRUE))~"Zou et al (2022)",
+         TRUE~Reference))
 
 #Create separate data frames for each component
 FAO_Zou_P_Input <- FAO_Zou_P %>% filter(item=="Input_MtPperYr")
@@ -1369,10 +1375,10 @@ FAO_Zou_PUE_pc <- FAO_Zou_P %>% filter(item=="PUE_pc")
 #Plot differences between Zou and FAO data
 #Inputs
 FAO_Zou_P_input_plot  <- FAO_Zou_P_Input %>%  
-  ggplot(aes(x=year, y=value, color = source)) +
-  geom_line(aes(color = source, size=source)) +
-  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
-  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  ggplot(aes(x=year, y=value, color = Reference)) +
+  geom_line(aes(color=Reference, size=Reference)) + 
+  scale_size_manual(values = c("FAO (2022) Cropland Nutrient Budget (current study)" = 3,"Zou et al (2022)"=1))+
+  scale_color_manual(values=c("FAO (2022) Cropland Nutrient Budget (current study)" = "#000000","Zou et al (2022)"="#56B4E9"))+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -1388,10 +1394,10 @@ FAO_Zou_P_input_plot
 
 #Outputs
 FAO_Zou_P_output_plot  <- FAO_Zou_P_Output %>%  
-  ggplot(aes(x=year, y=value, color = source)) +
-  geom_line(aes(color = source, size=source)) +
-  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
-  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  ggplot(aes(x=year, y=value, color = Reference)) +
+  geom_line(aes(color=Reference, size=Reference)) + 
+  scale_size_manual(values = c("FAO (2022) Cropland Nutrient Budget (current study)" = 3,"Zou et al (2022)"=1))+
+  scale_color_manual(values=c("FAO (2022) Cropland Nutrient Budget (current study)" = "#000000","Zou et al (2022)"="#56B4E9"))+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -1407,10 +1413,10 @@ FAO_Zou_P_output_plot
 
 #Surplus
 FAO_Zou_P_surplus_plot  <- FAO_Zou_P_Surplus %>%  
-  ggplot(aes(x=year, y=value, color = source)) +
-  geom_line(aes(color = source, size=source)) +
-  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
-  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  ggplot(aes(x=year, y=value, color = Reference)) +
+  geom_line(aes(color=Reference, size=Reference)) + 
+  scale_size_manual(values = c("FAO (2022) Cropland Nutrient Budget (current study)" = 3,"Zou et al (2022)"=1))+
+  scale_color_manual(values=c("FAO (2022) Cropland Nutrient Budget (current study)" = "#000000","Zou et al (2022)"="#56B4E9"))+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -1424,13 +1430,12 @@ FAO_Zou_P_surplus_plot  <- FAO_Zou_P_Surplus %>%
   labs(tag="(c)", y= "Phosphorus surplus\n (Mt per year)")
 FAO_Zou_P_surplus_plot
 
-
 #Surplus
 FAO_Zou_PUE_plot  <- FAO_Zou_PUE_pc %>%  
-  ggplot(aes(x=year, y=value, color = source)) +
-  geom_line(aes(color = source, size=source)) +
-  scale_size_manual(values = c("Current study" = 3,"Zou"=1))+
-  scale_color_manual(values=c("Current study" = "#000000","Zou"="#56B4E9"))+
+  ggplot(aes(x=year, y=value, color = Reference)) +
+  geom_line(aes(color=Reference, size=Reference)) + 
+  scale_size_manual(values = c("FAO (2022) Cropland Nutrient Budget (current study)" = 3,"Zou et al (2022)"=1))+
+  scale_color_manual(values=c("FAO (2022) Cropland Nutrient Budget (current study)" = "#000000","Zou et al (2022)"="#56B4E9"))+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -1459,3 +1464,269 @@ ggsave("./results/plot_world_P_budget_PUE_inputs_outputs_comparison.jpg",
 #Save csv files
 write.csv(FAO_Zou_P,"./results/FAO_Zou_P_comparison_by_year_world.csv",
           row.names= FALSE)
+
+#Compare nutrient concentrations of key crops
+Nutrient_concentrations <- read_excel("data/Nutrient_concentrations_across_studies.xlsx")
+
+#Plot results
+Nutrient_concentrations_plot  <- Nutrient_concentrations%>%  
+  ggplot(aes(x=Crop, y=Concentration, color=Study))+
+  geom_point(aes(size=Study, shape=Study)) + 
+  scale_size_manual(values = c(2,2,3,2,2,2,2))+
+  scale_shape_manual(values=c(1,2,16,4,5,6,7))+ 
+  scale_color_manual(values=c("#56B4E9", "#56B4E9","#000000","#56B4E9","#56B4E9","#56B4E9","#56B4E9"))+
+  facet_wrap(~Nutrient)+
+    theme(axis.line.x = element_line(color="black", size = 0.5),
+        axis.line.y = element_line(color="black", size = 0.5),
+        axis.text.x=element_text(angle=90),text=element_text(size=20),
+        panel.border = element_blank(), panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),  legend.key = element_blank(),
+        panel.background = element_rect(fill="white", color="white"),
+        strip.background = element_blank(),
+        legend.title = element_text(size = legend_title_size-0.5), 
+        legend.key.size = unit(legend_key_size-0.5, 'cm'),
+        legend.text=element_text(size=legend_title_size-0.5))+
+  labs(y= "Nutrient concentration\n (kg nutrient per tonne product")
+Nutrient_concentrations_plot               
+
+#Create maps showing N,P and K Inputs and Outputs in kg/ha by country.
+#Create dataframes with year and element of interest----
+df_N_kg_ha_in <- dplyr::filter(df,Year==2020, Element=="Cropland nitrogen per unit area",  Item=="Input")
+df_P_kg_ha_in <- dplyr::filter(df,Year==2020, Element=="Cropland phosphorus per unit area", Item=="Input")
+df_K_kg_ha_in <- dplyr::filter(df,Year==2020, Element=="Cropland potassium per unit area",Item=="Input")
+df_N_kg_ha_out <- dplyr::filter(df,Year==2020, Element=="Cropland nitrogen per unit area",  Item=="Outputs")
+df_P_kg_ha_out <- dplyr::filter(df,Year==2020, Element=="Cropland phosphorus per unit area", Item=="Outputs")
+df_K_kg_ha_out <- dplyr::filter(df,Year==2020, Element=="Cropland potassium per unit area",Item=="Outputs")
+
+#Create nutrient and category columns----
+df_N_kg_ha_in$Nutrient <- "N"
+df_P_kg_ha_in$Nutrient <- "P"
+df_K_kg_ha_in$Nutrient <-  "K"
+df_N_kg_ha_out$Nutrient <- "N"
+df_P_kg_ha_out$Nutrient <- "P"
+df_K_kg_ha_out$Nutrient <-  "K"
+
+df_N_kg_ha_in$Range <- NA
+df_P_kg_ha_in$Range <- NA
+df_K_kg_ha_in$Range <- NA
+df_N_kg_ha_out$Range <- NA
+df_P_kg_ha_out$Range <- NA
+df_K_kg_ha_out$Range <- NA
+
+#Standardise colours for each category----
+colour1 <- "#543005"
+colour2 <- "red"
+colour3="lightgreen"
+colour4="darkgreen"
+colour5= "yellow"
+colour6="orange"
+colour_no_data="grey"
+
+#Get dataframe with map information
+#nc <- sf::st_read("./data/UNmap_05/BNDA05_CTY.shp", quiet = TRUE)
+
+#Merge map information with data
+df_N_kg_ha_in <- merge(nc, df_N_kg_ha_in, all.x=TRUE, by.x=c("ISO3CD"), by.y=c("country_iso3"))
+df_P_kg_ha_in <- merge(nc, df_P_kg_ha_in, all.x=TRUE, by.x=c("ISO3CD"), by.y=c("country_iso3"))
+df_K_kg_ha_in <- merge(nc, df_K_kg_ha_in, all.x=TRUE, by.x=c("ISO3CD"), by.y=c("country_iso3"))
+df_N_kg_ha_out <- merge(nc, df_N_kg_ha_out, all.x=TRUE, by.x=c("ISO3CD"), by.y=c("country_iso3"))
+df_P_kg_ha_out <- merge(nc, df_P_kg_ha_out, all.x=TRUE, by.x=c("ISO3CD"), by.y=c("country_iso3"))
+df_K_kg_ha_out <- merge(nc, df_K_kg_ha_out, all.x=TRUE, by.x=c("ISO3CD"), by.y=c("country_iso3"))
+
+#Assign values to categories----
+#N_kg_ha_in
+Quantiles = signif(quantile(df_N_kg_ha_in$value, c(.20, .40, .60, .80), na.rm=T), 1)
+df_N_kg_ha_in$Range = NA
+df_N_kg_ha_in$Range[df_N_kg_ha_in$value<round(Quantiles[1],0)[[1]]&!is.na(df_N_kg_ha_in$value)] = paste0("<= ",as.character(round(Quantiles[1],0)[[1]]))
+df_N_kg_ha_in$Range[df_N_kg_ha_in$value>=round(Quantiles[1],0)[[1]]&df_N_kg_ha_in$value<=round(Quantiles[2],0)[[1]]&!is.na(df_N_kg_ha_in$value)] = paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]]))
+df_N_kg_ha_in$Range[df_N_kg_ha_in$value>=round(Quantiles[2],0)[[1]]&df_N_kg_ha_in$value<=round(Quantiles[3],0)[[1]]&!is.na(df_N_kg_ha_in$value)] = paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]]))
+df_N_kg_ha_in$Range[df_N_kg_ha_in$value>=round(Quantiles[3],0)[[1]]&df_N_kg_ha_in$value<=round(Quantiles[4],0)[[1]]&!is.na(df_N_kg_ha_in$value)] = paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]]))
+df_N_kg_ha_in$Range[df_N_kg_ha_in$value>=round(Quantiles[4],0)[[1]]] = paste0("> ",as.character(round(Quantiles[4],0)[[1]]))
+df_N_kg_ha_in$Range[is.na(df_N_kg_ha_in$value)] = "No data"
+df_N_kg_ha_in$Range = as.character(as.factor(df_N_kg_ha_in$Range))
+df_N_kg_ha_in$Range = as.factor(df_N_kg_ha_in$Range)
+df_N_kg_ha_in$Range <- factor(df_N_kg_ha_in$Range, levels = c(paste0("<= ",as.character(round(Quantiles[1],0)[[1]])), 
+                                                        paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]])), 
+                                                        paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]])),
+                                                        paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]])),
+                                                        paste0("> ",as.character(round(Quantiles[4],0)[[1]])),
+                                                        "No data"))
+
+#P_kg_ha_in
+Quantiles = signif(quantile(df_P_kg_ha_in$value, c(.20, .40, .60, .80), na.rm=T), 1)
+df_P_kg_ha_in$Range = NA
+df_P_kg_ha_in$Range[df_P_kg_ha_in$value<round(Quantiles[1],0)[[1]]&!is.na(df_P_kg_ha_in$value)] = paste0("<= ",as.character(round(Quantiles[1],0)[[1]]))
+df_P_kg_ha_in$Range[df_P_kg_ha_in$value>=round(Quantiles[1],0)[[1]]&df_P_kg_ha_in$value<=round(Quantiles[2],0)[[1]]&!is.na(df_P_kg_ha_in$value)] = paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]]))
+df_P_kg_ha_in$Range[df_P_kg_ha_in$value>=round(Quantiles[2],0)[[1]]&df_P_kg_ha_in$value<=round(Quantiles[3],0)[[1]]&!is.na(df_P_kg_ha_in$value)] = paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]]))
+df_P_kg_ha_in$Range[df_P_kg_ha_in$value>=round(Quantiles[3],0)[[1]]&df_P_kg_ha_in$value<=round(Quantiles[4],0)[[1]]&!is.na(df_P_kg_ha_in$value)] = paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]]))
+df_P_kg_ha_in$Range[df_P_kg_ha_in$value>=round(Quantiles[4],0)[[1]]] = paste0("> ",as.character(round(Quantiles[4],0)[[1]]))
+df_P_kg_ha_in$Range[is.na(df_P_kg_ha_in$value)] = "No data"
+df_P_kg_ha_in$Range = as.character(as.factor(df_P_kg_ha_in$Range))
+df_P_kg_ha_in$Range = as.factor(df_P_kg_ha_in$Range)
+df_P_kg_ha_in$Range <- factor(df_P_kg_ha_in$Range, levels = c(paste0("<= ",as.character(round(Quantiles[1],0)[[1]])), 
+                                                        paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]])), 
+                                                        paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]])),
+                                                        paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]])),
+                                                        paste0("> ",as.character(round(Quantiles[4],0)[[1]])),
+                                                        "No data"))
+
+#K_kg_ha_in
+Quantiles = signif(quantile(df_K_kg_ha_in$value, c(.20, .40, .60, .80), na.rm=T), 1)
+df_K_kg_ha_in$Range = NA
+df_K_kg_ha_in$Range[df_K_kg_ha_in$value<round(Quantiles[1],0)[[1]]&!is.na(df_K_kg_ha_in$value)] = paste0("<= ",as.character(round(Quantiles[1],0)[[1]]))
+df_K_kg_ha_in$Range[df_K_kg_ha_in$value>=round(Quantiles[1],0)[[1]]&df_K_kg_ha_in$value<=round(Quantiles[2],0)[[1]]&!is.na(df_K_kg_ha_in$value)] = paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]]))
+df_K_kg_ha_in$Range[df_K_kg_ha_in$value>=round(Quantiles[2],0)[[1]]&df_K_kg_ha_in$value<=round(Quantiles[3],0)[[1]]&!is.na(df_K_kg_ha_in$value)] = paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]]))
+df_K_kg_ha_in$Range[df_K_kg_ha_in$value>=round(Quantiles[3],0)[[1]]&df_K_kg_ha_in$value<=round(Quantiles[4],0)[[1]]&!is.na(df_K_kg_ha_in$value)] = paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]]))
+df_K_kg_ha_in$Range[df_K_kg_ha_in$value>=round(Quantiles[4],0)[[1]]] = paste0("> ",as.character(round(Quantiles[4],0)[[1]]))
+df_K_kg_ha_in$Range[is.na(df_K_kg_ha_in$value)] = "No data"
+df_K_kg_ha_in$Range = as.character(as.factor(df_K_kg_ha_in$Range))
+df_K_kg_ha_in$Range = as.factor(df_K_kg_ha_in$Range)
+df_K_kg_ha_in$Range <- factor(df_K_kg_ha_in$Range, levels = c(paste0("<= ",as.character(round(Quantiles[1],0)[[1]])), 
+                                                        paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]])), 
+                                                        paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]])),
+                                                        paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]])),
+                                                        paste0("> ",as.character(round(Quantiles[4],0)[[1]])),
+                                                        "No data"))
+
+#N_kg_ha_out
+Quantiles = signif(quantile(df_N_kg_ha_out$value, c(.20, .40, .60, .80), na.rm=T), 1)
+df_N_kg_ha_out$Range = NA
+df_N_kg_ha_out$Range[df_N_kg_ha_out$value<round(Quantiles[1],0)[[1]]&!is.na(df_N_kg_ha_out$value)] = paste0("<= ",as.character(round(Quantiles[1],0)[[1]]))
+df_N_kg_ha_out$Range[df_N_kg_ha_out$value>=round(Quantiles[1],0)[[1]]&df_N_kg_ha_out$value<=round(Quantiles[2],0)[[1]]&!is.na(df_N_kg_ha_out$value)] = paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]]))
+df_N_kg_ha_out$Range[df_N_kg_ha_out$value>=round(Quantiles[2],0)[[1]]&df_N_kg_ha_out$value<=round(Quantiles[3],0)[[1]]&!is.na(df_N_kg_ha_out$value)] = paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]]))
+df_N_kg_ha_out$Range[df_N_kg_ha_out$value>=round(Quantiles[3],0)[[1]]&df_N_kg_ha_out$value<=round(Quantiles[4],0)[[1]]&!is.na(df_N_kg_ha_out$value)] = paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]]))
+df_N_kg_ha_out$Range[df_N_kg_ha_out$value>=round(Quantiles[4],0)[[1]]] = paste0("> ",as.character(round(Quantiles[4],0)[[1]]))
+df_N_kg_ha_out$Range[is.na(df_N_kg_ha_out$value)] = "No data"
+df_N_kg_ha_out$Range = as.character(as.factor(df_N_kg_ha_out$Range))
+df_N_kg_ha_out$Range = as.factor(df_N_kg_ha_out$Range)
+df_N_kg_ha_out$Range <- factor(df_N_kg_ha_out$Range, levels = c(paste0("<= ",as.character(round(Quantiles[1],0)[[1]])), 
+                                                              paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]])), 
+                                                              paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]])),
+                                                              paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]])),
+                                                              paste0("> ",as.character(round(Quantiles[4],0)[[1]])),
+                                                              "No data"))
+
+#P_kg_ha_out
+Quantiles = signif(quantile(df_P_kg_ha_out$value, c(.20, .40, .60, .80), na.rm=T), 1)
+df_P_kg_ha_out$Range = NA
+df_P_kg_ha_out$Range[df_P_kg_ha_out$value<round(Quantiles[1],0)[[1]]&!is.na(df_P_kg_ha_out$value)] = paste0("<= ",as.character(round(Quantiles[1],0)[[1]]))
+df_P_kg_ha_out$Range[df_P_kg_ha_out$value>=round(Quantiles[1],0)[[1]]&df_P_kg_ha_out$value<=round(Quantiles[2],0)[[1]]&!is.na(df_P_kg_ha_out$value)] = paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]]))
+df_P_kg_ha_out$Range[df_P_kg_ha_out$value>=round(Quantiles[2],0)[[1]]&df_P_kg_ha_out$value<=round(Quantiles[3],0)[[1]]&!is.na(df_P_kg_ha_out$value)] = paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]]))
+df_P_kg_ha_out$Range[df_P_kg_ha_out$value>=round(Quantiles[3],0)[[1]]&df_P_kg_ha_out$value<=round(Quantiles[4],0)[[1]]&!is.na(df_P_kg_ha_out$value)] = paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]]))
+df_P_kg_ha_out$Range[df_P_kg_ha_out$value>=round(Quantiles[4],0)[[1]]] = paste0("> ",as.character(round(Quantiles[4],0)[[1]]))
+df_P_kg_ha_out$Range[is.na(df_P_kg_ha_out$value)] = "No data"
+df_P_kg_ha_out$Range = as.character(as.factor(df_P_kg_ha_out$Range))
+df_P_kg_ha_out$Range = as.factor(df_P_kg_ha_out$Range)
+df_P_kg_ha_out$Range <- factor(df_P_kg_ha_out$Range, levels = c(paste0("<= ",as.character(round(Quantiles[1],0)[[1]])), 
+                                                              paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]])), 
+                                                              paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]])),
+                                                              paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]])),
+                                                              paste0("> ",as.character(round(Quantiles[4],0)[[1]])),
+                                                              "No data"))
+
+#K_kg_ha_out
+Quantiles = signif(quantile(df_K_kg_ha_out$value, c(.20, .40, .60, .80), na.rm=T), 1)
+df_K_kg_ha_out$Range = NA
+df_K_kg_ha_out$Range[df_K_kg_ha_out$value<round(Quantiles[1],0)[[1]]&!is.na(df_K_kg_ha_out$value)] = paste0("<= ",as.character(round(Quantiles[1],0)[[1]]))
+df_K_kg_ha_out$Range[df_K_kg_ha_out$value>=round(Quantiles[1],0)[[1]]&df_K_kg_ha_out$value<=round(Quantiles[2],0)[[1]]&!is.na(df_K_kg_ha_out$value)] = paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]]))
+df_K_kg_ha_out$Range[df_K_kg_ha_out$value>=round(Quantiles[2],0)[[1]]&df_K_kg_ha_out$value<=round(Quantiles[3],0)[[1]]&!is.na(df_K_kg_ha_out$value)] = paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]]))
+df_K_kg_ha_out$Range[df_K_kg_ha_out$value>=round(Quantiles[3],0)[[1]]&df_K_kg_ha_out$value<=round(Quantiles[4],0)[[1]]&!is.na(df_K_kg_ha_out$value)] = paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]]))
+df_K_kg_ha_out$Range[df_K_kg_ha_out$value>=round(Quantiles[4],0)[[1]]] = paste0("> ",as.character(round(Quantiles[4],0)[[1]]))
+df_K_kg_ha_out$Range[is.na(df_K_kg_ha_out$value)] = "No data"
+df_K_kg_ha_out$Range = as.character(as.factor(df_K_kg_ha_out$Range))
+df_K_kg_ha_out$Range = as.factor(df_K_kg_ha_out$Range)
+df_K_kg_ha_out$Range <- factor(df_K_kg_ha_out$Range, levels = c(paste0("<= ",as.character(round(Quantiles[1],0)[[1]])), 
+                                                                    paste0(as.character(round(Quantiles[1],0)[[1]]), " <= ", as.character(round(Quantiles[2],0)[[1]])), 
+                                                                    paste0(as.character(round(Quantiles[2],0)[[1]]), " <= ", as.character(round(Quantiles[3],0)[[1]])),
+                                                                    paste0(as.character(round(Quantiles[3],0)[[1]]), " <= ", as.character(round(Quantiles[4],0)[[1]])),
+                                                                    paste0("> ",as.character(round(Quantiles[4],0)[[1]])),
+                                                                    "No data"))
+
+#Plot results in map----
+map_theme <-   theme_classic()
+
+#N kg ha inputs
+N_kg_ha_in_plot <- ggplot(df_N_kg_ha_in , aes(fill=Range))+
+  geom_sf(size=.1) +
+  scale_fill_manual(values=c(colour3,
+                             colour4,
+                             colour5,
+                             colour6,
+                             colour2,
+                             colour_no_data)) +
+  labs(tag="(a) N")+
+  map_theme
+
+#P kg ha inputs
+P_kg_ha_in_plot <- ggplot(df_P_kg_ha_in , aes(fill=Range))+
+  geom_sf(size=.1) +
+  scale_fill_manual(values=c(colour3,
+                             colour4,
+                             colour5,
+                             colour6,
+                             colour2,
+                             colour_no_data)) +
+  labs(tag="(b) P")+
+  map_theme
+
+#K kg ha inputs
+K_kg_ha_in_plot <- ggplot(df_K_kg_ha_in , aes(fill=Range))+
+  geom_sf(size=.1) +
+  scale_fill_manual(values=c(colour3,
+                             colour4,
+                             colour5,
+                             colour6,
+                             colour2,
+                             colour_no_data)) +
+  labs(tag="(c) K")+
+  map_theme
+
+#N kg ha outputs
+N_kg_ha_out_plot <- ggplot(df_N_kg_ha_out , aes(fill=Range))+
+  geom_sf(size=.1) +
+  scale_fill_manual(values=c(colour3,
+                             colour4,
+                             colour5,
+                             colour6,
+                             colour2,
+                             colour_no_data)) +
+  labs(tag="(a) N")+
+  map_theme
+
+#P kg ha outputs
+P_kg_ha_out_plot <- ggplot(df_P_kg_ha_out , aes(fill=Range))+
+  geom_sf(size=.1) +
+  scale_fill_manual(values=c(colour3,
+                             colour4,
+                             colour5,
+                             colour6,
+                             colour2,
+                             colour_no_data)) +
+  labs(tag="(b) P")+
+  map_theme
+
+#K kg ha inputs
+K_kg_ha_out_plot <- ggplot(df_K_kg_ha_out , aes(fill=Range))+
+  geom_sf(size=.1) +
+  scale_fill_manual(values=c(colour3,
+                             colour4,
+                             colour5,
+                             colour6,
+                             colour2,
+                             colour_no_data)) +
+  labs(tag="(c) K")+
+  map_theme
+
+#Join plots into one----
+Nu_kg_ha_in_Plot <-   ggarrange(N_kg_ha_in_plot,P_kg_ha_in_plot,K_kg_ha_in_plot, ncol=1, 
+                             font.label = list(size = 30))
+
+Nu_kg_ha_out_Plot <-   ggarrange(N_kg_ha_out_plot,P_kg_ha_out_plot,K_kg_ha_out_plot, ncol=1, 
+                                font.label = list(size = 30))
+
+#Save maps into one file----
+ggsave("./results/plot_world_N_P_K_kg_ha_inputs.jpg", Nu_kg_ha_in_Plot,
+       width = 20, height = 20, units = "cm")
+
+ggsave("./results/plot_world_N_P_K_kg_ha_outputs.jpg", Nu_kg_ha_out_Plot,
+       width = 20, height = 20, units = "cm")
