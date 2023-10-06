@@ -156,7 +156,7 @@ NPK_world_budget_plot_Mt <- df_world %>% #On a Million tonne basis
   geom_point()+geom_line()+
   scale_y_continuous(labels = scales::label_comma(scale = 0.000001))+
   theme_classic()+
-  labs(tag="(a)", y= "Nutrient budget in millions of tonnes of nutrient per year")+
+  labs(tag="(a)", y= "Nutrient balance in millions of tonnes of nutrient per year")+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=15)) 
@@ -173,7 +173,7 @@ NPK_world_budget_plot_kg_ha <- df_world %>% #On a kg/ha basis
   geom_point(na.rm = TRUE, size=2)+
   scale_y_continuous(labels = scales::label_comma(scale = 1))+
   theme_classic()+
-  labs(tag="(b)", y= "Nutrient budget in kilograms of nutrient per hectare per year")+
+  labs(tag="(b)", y= "Nutrient balance in kilograms of nutrient per hectare per year")+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=15))
@@ -211,7 +211,7 @@ ggplot(aes(fill=Nutrient,x=Area,y=value)) +
   theme_update(text = element_text(size=10)) +
   scale_y_continuous(labels = scales::label_comma(scale = 0.000001))+
   labs(tag="(a)", x="Region",
-       y= "Nutrient budget in Mt of nutrient")+
+       y= "Nutrient balance in Mt of nutrient")+
   theme(axis.line.x = element_line(color="black", size = 0.5),#There was conflict with use of theme_classic and being able to add axis lines so I explicitly made background white.
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -234,7 +234,7 @@ NPK_region_budget_plot_kg_ha <- df_region %>% #On a Million tonne basis
  theme_update(text = element_text(size=10)) +
   scale_y_continuous(labels = scales::label_comma(scale = 1))+
   labs(tag="(b)", x="Region",
-       y= "Nutrient budget in kg of nutrient per ha")+
+       y= "Nutrient balance in kg of nutrient per ha")+
    theme(axis.line.x = element_line(color="black", size = 0.5),
          axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -273,7 +273,7 @@ NPK_country_budget_plot_Mt <- df_country %>% #On a Million tonne basis
   theme_update(text = element_text(size=10)) +
   scale_y_continuous(labels = scales::label_comma(scale = 0.000001))+
   labs(tag="(a)", x="Country",
-       y= "Nutrient budget in Mt of nutrient")+
+       y= "Nutrient balance in Mt of nutrient")+
   theme(axis.line.x = element_line(color="black", size = 0.5),#There was conflict with use of theme_classic and being able to add axis lines so I explicitly made background white.
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -296,7 +296,7 @@ NPK_country_budget_plot_kg_ha <- df_country %>% #On a per ha basis.
   theme_update(text = element_text(size=10)) +
   scale_y_continuous(labels = scales::label_comma(scale = 1))+
   labs(tag="(b)", x="Country",
-       y= "Nutrient budget in kg of nutrient per ha")+
+       y= "Nutrient balance in kg of nutrient per ha")+
   theme(axis.line.x = element_line(color="black", size = 0.5),
         axis.line.y = element_line(color="black", size = 0.5),
         axis.text.x=element_text(angle=90),text=element_text(size=20),
@@ -386,7 +386,7 @@ NPK_regions_budget_plot_kg_ha <- df_regions   %>% mutate(Nutrient= fct_relevel(N
         legend.title = element_text(size = legend_title_size), 
         legend.key.size = unit(legend_key_size, 'cm'),
         legend.text=element_text(size=legend_title_size))+
-  labs(tag="(a)", y= "Nutrient budget in kg of nutrient per ha") +
+  labs(tag="(a)", y= "Nutrient balance in kg of nutrient per ha") +
   geom_hline(yintercept=0, linetype="solid", color = "black", size=0.25)
 
 #Create time series plots for top N consuming countries. 
@@ -423,7 +423,7 @@ NPK_countries_budget_plot_kg_ha <- df_countries   %>% mutate(Nutrient= fct_relev
         legend.title = element_text(size = legend_title_size), 
         legend.key.size = unit(legend_key_size, 'cm'),
         legend.text=element_text(size=legend_title_size))+
-  labs(tag="(b)", y= "Nutrient budget in kg of nutrient per ha") +
+  labs(tag="(b)", y= "Nutrient balance in kg of nutrient per ha") +
   geom_hline(yintercept=0, linetype="solid", color = "black", size=0.25)
 
 Plot_countries_regions_NPK_budget_kg_ha <- ggarrange(NPK_regions_budget_plot_kg_ha,NPK_countries_budget_plot_kg_ha,
@@ -455,7 +455,7 @@ NPK_regions_budget_plot_Mt <- df_regions   %>% mutate(Nutrient= fct_relevel(Nutr
         legend.title = element_text(size = legend_title_size), 
         legend.key.size = unit(legend_key_size, 'cm'),
         legend.text=element_text(size=legend_title_size))+
-  labs(tag="(a)", y= "Nutrient budget in Mt per region") + 
+  labs(tag="(a)", y= "Nutrient balance in Mt per region") + 
   scale_y_continuous(labels = scales::label_comma(scale = 0.000001))+
   geom_hline(yintercept=0, linetype="solid", color = "black", size=0.25)
 
@@ -485,7 +485,7 @@ NPK_countries_budget_plot_Mt <- df_countries   %>% mutate(Nutrient= fct_relevel(
         legend.title = element_text(size = legend_title_size), 
         legend.key.size = unit(legend_key_size, 'cm'),
         legend.text=element_text(size=legend_title_size))+
-  labs(tag="(b)", y= "Nutrient budget in Mt per country")+ 
+  labs(tag="(b)", y= "Nutrient balance in Mt per country")+ 
 scale_y_continuous(labels = scales::label_comma(scale = 0.000001)) +
   geom_hline(yintercept=0, linetype="solid", color = "black", size=0.25)
 
@@ -582,21 +582,21 @@ ggsave("./results/Plot_countries_regions_NPK_NUE.jpg", Plot_countries_regions_NP
 
 #Create region and country-centric plots for nutrient budgets and estimates of NUE----
 #Create region-centric plots for nutrient budgets and nutrient use efficiency----
-Plot_regions_NPK_budget_NUE <- ggarrange(NPK_regions_budget_plot_kg_ha + labs(tag="a", y= "Nutrient budget in kg per hectare") ,
+Plot_regions_NPK_budget_NUE <- ggarrange(NPK_regions_budget_plot_kg_ha + labs(tag="a", y= "Nutrient balance in kg per hectare") ,
                                          NPK_regions_NUE_plot+labs(tag="(b)", y= "Nutrient use efficiency") ,
                                             ncol=1,nrow=2, common.legend=T, legend="bottom" )
 
 ggsave("./results/Plot_regions_NPK_budget_NUE.jpg", Plot_regions_NPK_budget_NUE,width = 50, height = 40, units = "cm")
 
 #Create country-centric plots for nutrient budgets and nutrient use efficiency----
-Plot_countries_NPK_NUE_budget <- ggarrange(NPK_countries_budget_plot_kg_ha+ labs(tag="a", y= "Nutrient budget in kg per hectare"),
+Plot_countries_NPK_NUE_budget <- ggarrange(NPK_countries_budget_plot_kg_ha+ labs(tag="a", y= "Nutrient balance in kg per hectare"),
                                            NPK_countries_NUE_plot+labs(tag="(b)", y= "Nutrient use efficiency"),
                                             ncol=1,nrow=2, common.legend=T, legend="bottom" )
 
 ggsave("./results/Plot_countries_NPK_NUE_budget.jpg", Plot_countries_NPK_NUE_budget,width = 50, height = 40, units = "cm")
 
 #Save faceted  (by N,P and K) Mt nutrient budget for major world regions----
-NPK_regions_budget_plot_Mt <- NPK_regions_budget_plot_Mt  + labs(tag="", y= "Nutrient budget in Mt per region")
+NPK_regions_budget_plot_Mt <- NPK_regions_budget_plot_Mt  + labs(tag="", y= "Nutrient balance in Mt per region")
 ggsave("./results/NPK_regions_budget_plot_Mt.jpg", NPK_regions_budget_plot_Mt,width = 30, height = 20, units = "cm")
 
 #Compare N budget and N use efficiencies against other studies----
@@ -749,7 +749,7 @@ plot_world_N_budget_comparison  <- world_N_budget_comparison %>%  ggplot(aes(x=Y
         legend.title = element_text(size = legend_title_size-0.5), 
         legend.key.size = unit(legend_key_size-0.5, 'cm'),
         legend.text=element_text(size=legend_title_size-0.5))+
-  labs(tag="(c)", y= "Nitrogen budget (surplus)\n (Mt per year)")
+  labs(tag="(c)", y= "Nitrogen balance (surplus)\n (Mt per year)")
 
 plot_world_NUE_comparison  <- world_NUE_comparison %>%  ggplot(aes(x=Year, y=value*100, color = Reference)) +
   geom_line(aes(size = Reference)) +
@@ -801,7 +801,7 @@ ggsave("./results/plot_world_N_budget_NUE_comparison .jpg", plot_world_N_budget_
 
 #Combine plots for article----
 plot_world_region_budget_total_per_ha_use_efficiency <- ggarrange(NPK_regions_budget_plot_Mt+
-                                                                    labs(tag="(a)", y="Nutrient budget in Mt per Area"),
+                                                                    labs(tag="(a)", y="Nutrient balance in Mt per Area"),
                                                   NPK_regions_budget_plot_kg_ha+
                                                     labs(tag="(b)"),
                                                   NPK_regions_NUE_plot+
